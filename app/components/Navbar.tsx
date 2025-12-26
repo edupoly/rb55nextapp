@@ -9,6 +9,7 @@ function Navbar() {
             <Link href="/aboutus">Aboutus</Link>
             <Link href="/contactus">Contactus</Link>
             <Link href="/products">Products</Link>
+            <Link href="/recipes">recipes</Link>
         </div>
   )
 }
