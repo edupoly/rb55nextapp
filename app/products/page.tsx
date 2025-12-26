@@ -1,10 +1,12 @@
 import React from 'react'
 import Products from './Products'
-
-async function page() {
-    const res = await fetch("https://dummyjson.com/products")
+async function getAllProducts(){
+  const res = await fetch("https://dummyjson.com/products")
     const data = await res.json();
-
+return data
+}
+async function page() {
+    const data = await getAllProducts()
   return (
     <div>
         <h1 className="text-4xl">Products</h1>
