@@ -4,7 +4,7 @@ import dbConnect from "@/lib/db";
 import Todo from "@/models/Todo";
 import { redirect } from "next/navigation";
 import getServerSession from "next-auth"; // Or your auth provider
-import { authOptions } from "@/app/api/auth/[nextauth]";
+
 import Student from "@/models/Student";
 
 import User from "@/models/User";

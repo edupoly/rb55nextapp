@@ -27,7 +27,7 @@ export default function RegisterPage() {
           type="email" 
           placeholder="emailId" 
           required 
-          value="praveengclasses@gmail.com"
+          defaultValue="praveengclasses@gmail.com"
           className="p-2 border rounded text-black" 
         />
         
@@ -36,7 +36,7 @@ export default function RegisterPage() {
           type="password" 
           placeholder="Password" 
           required 
-          value="hello123"
+          defaultValue="hello123"
           className="p-2 border rounded text-black" 
         />
 
