@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
-  fullname: {
+  firstname: {
+    type: String,
+    required: [true, "Please enter fullname"],
+  },
+  lastname: {
     type: String,
     required: [true, "Please enter fullname"],
   },
@@ -11,7 +15,6 @@ const studentSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
-  place: String,
 });
 
 // This line is crucial:
