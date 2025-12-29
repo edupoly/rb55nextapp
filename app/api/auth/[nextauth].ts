@@ -10,10 +10,10 @@ export const authOptions = {
       name: "credentials",
       credentials: {},
       async authorize(credentials) {
-        const { email, password } = credentials;
+        const { emailId, password } = credentials;
         await dbConnect();
-
-        const user = await User.findOne({ email });
+        console.log("ikkadidaka vasthunda", emailId);
+        const user = await User.findOne({ emailId });
         if (!user) return null;
 
         const passwordMatch = await bcrypt.compare(password, user.password);
