@@ -9,10 +9,11 @@ function Navbar() {
             <Link href="/aboutus">Aboutus</Link>
             <Link href="/contactus">Contactus</Link>
             <Link href="/products">Products</Link>
-            <Link href="/recipes">Recipes</Link>
+            <Link href="/todos">Todos</Link> 
+            {/* <Link href="/recipes">Recipes</Link>
             <Link href="/posts">Posts</Link>
-            <Link href="/users">Users</Link>
-            <Link href="/todos">Todos</Link>
+            <Link href="/users">Users</Link>*/}
+            
         </div>
   )
 }
