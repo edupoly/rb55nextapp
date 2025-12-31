@@ -3,9 +3,15 @@ import Todo from "@/models/Todo";
 import dbConnect from "@/lib/db";
 import { redirect } from "next/navigation";
 
+export async function getMyTodos(emailId) {
+  await dbConnect();
+  const myTodos = await Todo.find({ emailId });
+  console.log(myTodos);
+  return JSON.stringify(myTodos);
+}
 export async function getAllTodos() {
   await dbConnect();
-  let allTodos = await Todo.find();
+  const allTodos = await Todo.find();
   return JSON.stringify(allTodos);
 }
 

@@ -5,6 +5,7 @@ const todoSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter title"],
   },
+  emailId: String,
   status: String,
 });
 
