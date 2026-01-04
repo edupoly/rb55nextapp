@@ -1,8 +1,8 @@
 import React from 'react'
 import AllTodos from './AllTodos'
 import { getMyTodos } from '@/actions/todoActions'
-import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
+import { auth } from '../api/auth/[...nextauth]/route'
 
 async function page() {
     const session = await auth()

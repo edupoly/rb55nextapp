@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-import { auth } from "@/auth";
+
 import { redirect } from "next/navigation";
+import { auth } from "./api/auth/[...nextauth]/route";
 
 export default async function Home() {
   const session = await auth()

@@ -1,5 +1,9 @@
 "use server";
-import { auth, signOut } from "@/auth"; // Import from your central auth configuration
+
+import { auth, signOut } from "@/app/api/auth/[...nextauth]/route";
+
+// import { auth, signOut } from "@/auth"; // Import from your central auth configuration
+
 export async function getSessionDetails() {
   const session = await auth();
   if (!session) {
