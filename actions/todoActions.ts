@@ -3,13 +3,8 @@ import Todo from "@/models/Todo";
 import dbConnect from "@/lib/db";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-export async function getSessionDetails() {
-  const session = await auth();
-  if (!session) {
-    redirect("/login");
-  }
-  return session;
-}
+import { getSessionDetails } from "./auth-actions";
+
 export async function getMyTodos() {
   let { user } = await getSessionDetails();
   await dbConnect();
@@ -23,8 +18,8 @@ export async function getAllTodos() {
 }
 
 export async function addTodo(todo) {
-  let { user } = await getSessionDetails();
   await dbConnect();
+  let { user } = await getSessionDetails();
   await Todo.create({ ...todo, emailId: user.email });
   redirect("/todos");
 }
