@@ -25,18 +25,25 @@ function AllTodos({allTodos,editTodo}) {
         <h1 className='text-2xl'>AllTodos</h1>
         {!editFlag && (<AddTodo></AddTodo>)}
         {editFlag && (<EditTodo todo={selectedTodo}></EditTodo>)}
-        
-        <ul>
-            {
-                allTodos.map((todo)=>{
-                    return <li key={todo._id}>
-                        {todo.title}
-                        <button className='border p-1 m-1 bg-red-200' onClick={()=>{handleDeleteTodo(todo._id)}}>Delete</button>
-                        <button className='border p-1 m-1 bg-orange-200' onClick={()=>{handleEditTodo(todo)}}>Edit</button>
-                        </li>
-                })
-            }
-        </ul>
+        {
+            !allTodos  && <b>No Todos</b>
+        }
+        {
+            allTodos && (
+            <ul>
+                {
+                    allTodos.map((todo)=>{
+                        return <li key={todo._id}>
+                            {todo.title}
+                            <button className='border p-1 m-1 bg-red-200' onClick={()=>{handleDeleteTodo(todo._id)}}>Delete</button>
+                            <button className='border p-1 m-1 bg-orange-200' onClick={()=>{handleEditTodo(todo)}}>Edit</button>
+                            </li>
+                    })
+                }
+            </ul>
+            )
+        }
+       
     </div>
   )
 }

@@ -5,11 +5,12 @@ import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 
 async function page() {
-  const session = await auth()
+    const session = await auth()
     if(!session){
         redirect("/login")
     }
-    const allTodos = JSON.parse(await getMyTodos(session.emailId))
+    console.log("session details",session);
+    const allTodos = JSON.parse(await getMyTodos(session.user.email))
   return (
     <div  className='border p-2 m-2'>
         <div>todos page</div>

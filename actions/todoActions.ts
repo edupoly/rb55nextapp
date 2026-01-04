@@ -2,11 +2,18 @@
 import Todo from "@/models/Todo";
 import dbConnect from "@/lib/db";
 import { redirect } from "next/navigation";
-
-export async function getMyTodos(emailId) {
+import { auth } from "@/auth";
+export async function getSessionDetails() {
+  const session = await auth();
+  if (!session) {
+    redirect("/login");
+  }
+  return session;
+}
+export async function getMyTodos() {
+  let { user } = await getSessionDetails();
   await dbConnect();
-  const myTodos = await Todo.find({ emailId });
-  console.log(myTodos);
+  const myTodos = await Todo.find({ emailId: user.email });
   return JSON.stringify(myTodos);
 }
 export async function getAllTodos() {
@@ -16,8 +23,9 @@ export async function getAllTodos() {
 }
 
 export async function addTodo(todo) {
+  let { user } = await getSessionDetails();
   await dbConnect();
-  await Todo.create({ ...todo });
+  await Todo.create({ ...todo, emailId: user.email });
   redirect("/todos");
 }
 
