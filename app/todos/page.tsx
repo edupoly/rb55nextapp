@@ -1,9 +1,9 @@
 import React from 'react'
 import AllTodos from './AllTodos'
-import { getAllTodos } from '@/actions/todoActions'
+import { getAllTodos, getMyTodos } from '@/actions/todoActions'
 
 async function page() {
-    const allTodos = JSON.parse(await getAllTodos())
+    const allTodos = JSON.parse(await getMyTodos())
   return (
     <div  className='border p-2 m-2'>
         <div>todos page</div>
