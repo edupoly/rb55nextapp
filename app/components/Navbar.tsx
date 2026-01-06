@@ -21,7 +21,7 @@ async function Navbar() {
             }
             {
               !user && (<>
-              <Link href="/login">Login</Link> 
+              <Link href="/api/auth/signin">Login</Link> 
               </>)
             }
             
