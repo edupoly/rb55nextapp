@@ -1,4 +1,4 @@
-import { signOut } from '@/auth'
+
 import Link from 'next/link'
 import React from 'react'
 import Singout from './Singout'
@@ -16,7 +16,7 @@ async function Navbar() {
             {
               user && (<>
                 <Link href="/todos">Todos</Link> 
-                <Singout></Singout>
+                <Singout user={user}></Singout>
               </>)
             }
             {

@@ -20,6 +20,7 @@ export async function getAllTodos() {
 export async function addTodo(todo) {
   await dbConnect();
   let { user } = await getSessionDetails();
+  console.log("user at addTodo", user);
   await Todo.create({ ...todo, emailId: user.email });
   redirect("/todos");
 }

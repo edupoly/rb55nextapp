@@ -9,8 +9,7 @@ async function page() {
     if(!session){
         redirect("/login")
     }
-    console.log("session details",session);
-    const allTodos = JSON.parse(await getMyTodos(session.user.email))
+    const allTodos = JSON.parse(await getMyTodos())
   return (
     <div  className='border p-2 m-2'>
         <div>todos page</div>
