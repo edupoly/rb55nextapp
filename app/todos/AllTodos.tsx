@@ -4,7 +4,7 @@ import AddTodo from './AddTodo'
 import EditTodo from './EditTodo'
 import { useEffect, useState } from 'react'
 
-function AllTodos({allTodos,editTodo}) {
+function AllTodos({userTodos,editTodo}) {
     console.log(editTodo);
     let [editFlag,setEditFlag] = useState(editTodo)
     let [selectedTodo,setSelectedTodo]=useState(null)
@@ -28,7 +28,7 @@ function AllTodos({allTodos,editTodo}) {
         
         <ul>
             {
-                allTodos.map((todo)=>{
+                userTodos.map((todo)=>{
                     return <li key={todo._id}>
                         {todo.title}
                         <button className='border p-1 m-1 bg-red-200' onClick={()=>{handleDeleteTodo(todo._id)}}>Delete</button>
