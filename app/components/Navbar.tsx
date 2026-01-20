@@ -1,7 +1,9 @@
 import Link from 'next/link'
-import React from 'react'
 
-function Navbar() {
+import { getUserDetails } from '@/actions/auth-actions';
+
+async function Navbar() {
+  const user = await getUserDetails()
   return (
 
          <div className="flex gap-5 bg-gray-300 p-5">
