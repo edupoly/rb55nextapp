@@ -4,6 +4,7 @@ import { getUserDetails } from '@/actions/auth-actions';
 
 async function Navbar() {
   const user = await getUserDetails()
+  console.log(user);
   return (
 
          <div className="flex gap-5 bg-gray-300 p-5">
