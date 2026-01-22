@@ -11,7 +11,7 @@ export default function ImagePlugin() {
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
-    if (!editor.has(INSERT_IMAGE_COMMAND)) {
+    if (!editor.hasNode(INSERT_IMAGE_COMMAND)) {
       return editor.registerCommand(
         INSERT_IMAGE_COMMAND,
         (payload) => {

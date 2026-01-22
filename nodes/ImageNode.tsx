@@ -1,5 +1,16 @@
 // components/nodes/ImageNode.js
-import { DecoratorNode } from 'lexical';
+
+import { DecoratorNode, NodeKey, SerializedLexicalNode, Spread } from 'lexical';
+
+export type SerializedImageNode = Spread<
+  {
+    src: string;
+    altText: string;
+    width?: number;
+    height?: number;
+  },
+  SerializedLexicalNode
+>;
 
 function ImageComponent({ src, altText, width, height }) {
   return (
@@ -13,7 +24,7 @@ function ImageComponent({ src, altText, width, height }) {
   );
 }
 
-export class ImageNode extends DecoratorNode {
+export class ImageNode extends DecoratorNode<any> {
   __src;
   __altText;
   __width;
@@ -23,11 +34,30 @@ export class ImageNode extends DecoratorNode {
     return 'image';
   }
 
-  static clone(node) {
+// 1. ADD THIS: This method tells Lexical how to recreate the node from JSON
+  static importJSON(serializedNode: SerializedImageNode): ImageNode {
+    const { src, altText, width, height } = serializedNode;
+    const node = $createImageNode(src, altText, width, height);
+    return node;
+  }
+
+  // 2. ADD THIS: This method tells Lexical what data to save into the JSON string
+  exportJSON(): SerializedImageNode {
+    return {
+      type: 'image',
+      src: this.getSrc(),
+      altText: this.getAltText(),
+      width: this.__width,
+      height: this.__height,
+      version: 1,
+    };
+  }
+
+  static clone(node: ImageNode): ImageNode {
     return new ImageNode(node.__src, node.__altText, node.__width, node.__height, node.__key);
   }
 
-  constructor(src, altText, width, height, key) {
+ constructor(src: string, altText: string, width?: number, height?: number, key?: NodeKey) {
     super(key);
     this.__src = src;
     this.__altText = altText;
