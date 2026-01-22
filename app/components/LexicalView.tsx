@@ -7,7 +7,7 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { ListNode, ListItemNode } from "@lexical/list";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
-
+import { ImageNode } from "@/nodes/ImageNode";
 // Define a theme to style the output using Tailwind
 const theme = {
   heading: {
@@ -32,7 +32,7 @@ export default function LexicalView({ initialContent }) {
     editable: false, // Disables editing
     theme,
     // Add nodes here if you used them in your editor
-    nodes: [HeadingNode, ListNode, ListItemNode, QuoteNode],
+    nodes: [HeadingNode, ListNode, ListItemNode, QuoteNode,ImageNode],
     editorState: initialContent, // The JSON string from your DB
     onError: (error) => console.error(error),
   };

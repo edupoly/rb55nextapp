@@ -9,6 +9,8 @@ import { ListPlugin } from "@lexical/react/LexicalListPlugin"; // Add this
 import { HeadingNode, QuoteNode } from "@lexical/rich-text"; // Add this
 import { ListNode, ListItemNode } from "@lexical/list"; // Add this
 import Toolbar from './Toolbar';
+import { ImageNode } from '@/nodes/ImageNode';
+import ImagePlugin from '@/plugin/ImagePlugin';
 // import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
 const theme = { 
@@ -21,7 +23,7 @@ const theme = {
 export default function Editor({ onChange }) {
   const initialConfig = {
     namespace: 'MyEditor',
-    nodes: [HeadingNode, QuoteNode, ListNode, ListItemNode],
+    nodes: [HeadingNode, QuoteNode, ListNode, ListItemNode,ImageNode],
     theme,
     onError: (error) => console.error(error),
   };
@@ -39,6 +41,7 @@ export default function Editor({ onChange }) {
         />
           <HistoryPlugin />
           <ListPlugin />
+          <ImagePlugin></ImagePlugin>
         <OnChangePlugin onChange={(editorState) => {
           const jsonString = JSON.stringify(editorState.toJSON());
           onChange(jsonString);
