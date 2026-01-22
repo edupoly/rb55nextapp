@@ -47,7 +47,7 @@ const handleImageUploadClick = () => {
       formData.append('api_key', apiKey);
       formData.append('timestamp', timestamp);
       formData.append('signature', signature);
-      formData.append('upload_preset', 'your_upload_preset'); // REMEMBER to change this!
+      formData.append('upload_preset', 'simple'); // REMEMBER to change this!
 
       // 3. Upload to Cloudinary
       const cloudinaryResponse = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
